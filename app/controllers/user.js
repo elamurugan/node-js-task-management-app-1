@@ -1,51 +1,59 @@
 const passport = require('passport');
-const config = require('../config/config');
 var helpers = require('../helpers/helpers');
-var express = require('express');
-var router = express.Router();
 
-router.get('/', function(req, res) {
-  res.writeHead(302, {
-    'Location': helpers.baseUrl() + '/user/login'
-  });
-  res.end();
-});
-
-router.post('/login', function(req, res) {
-
-});
-
-router.post('/register', function(req, res) {
-  console.log(req.query);
-  console.log(req.body);
-  res.end();
-});
-
-router.get('/logout', function(req, res) {
-  req.logout();
-  res.writeHead(302, {
-    'Location': helpers.baseUrl()
-  });
-  res.end();
-});
-
-
-
-app.get('/profile', (req, res) => {
-  if (req.user) {
-    res.send(req.user);
-  } else {
-    res.send({
-      msg: 'Login Please',
-      code: 403
+module.exports = (app, express, config) => {
+    app.get('/user/', function(req, res) {
+        res.writeHead(302, {
+            'Location': helpers.baseUrl() + '/user/login'
+        });
+        res.end();
     });
-  }
-});
 
-router.get('/tasks', function(req, res) {
-  res.render('tasks/list_tasks', {
-    title: 'Tasks'
-  });
-});
+    app.get('/user/login', function(req, res) {
+        res.send({
+            msg: 'Login Please',
+            code: 403
+        });
+    });
 
-module.exports = router;
+    app.get('/user/register', function(req, res) {
+        res.send({
+            msg: 'Register Please',
+            code: 403
+        });
+    });
+
+    app.post('/user/login', function(req, res) {
+
+    });
+
+    app.post('/user/register', function(req, res) {
+        res.end();
+    });
+
+    app.get('/user/logout', function(req, res) {
+        req.logout();
+        res.writeHead(302, {
+            'Location': helpers.baseUrl()
+        });
+        res.end();
+    });
+
+    app.get('/user/profile', (req, res) => {
+        if (req.user) {
+            res.send(req.user);
+        } else {
+            res.send({
+                msg: 'Login Please',
+                code: 403
+            });
+        }
+    });
+
+    app.get('/user/tasks', function(req, res) {
+        res.render('tasks/list_tasks', {
+            title: 'Tasks'
+        });
+    });
+
+}

@@ -26,6 +26,7 @@ mongoose.connect(config.mongoURI, {
     .catch(err => console.log(err));
 
 const app = express();
+
 var helpers = require('./app/helpers/helpers');
 require('./app/models/User');
 require('./app/models/Tasks');
@@ -56,27 +57,23 @@ app.use(passport.session());
 
 
 const PORT = process.env.PORT || config.defaultPort;
+const routesPath = BasePath + 'controllers/';
+
 app.locals.copyright = new Date().getFullYear();
 app.locals.appName = config.appName;
 app.locals.logo = config.appName.match(/\b(\w)/g).join('');
 app.locals.baseUrl = config.appUrl + ':' + PORT;
+app.locals.bp = __dirname + '/';
 
-// require('./app/helpers/auth')(app);
 
-app.use(function routing(req, res, next) {
-    var reqModule = URL.parse(req.url).pathname.split('/')[1];
-    if (!reqModule) {
-        reqModule = 'home';
+require('fs').readdirSync(routesPath).forEach(function(file) {
+    if (file.match(/.+\.js/g) !== null) {
+        require(routesPath + file)(app, express, config);
+        console.log(routesPath + file);
     }
-    if (reqModule && config.modulesList.indexOf(reqModule) >= 0) {
-        var modPath = BasePath + 'controllers/' + reqModule + '.js';
-        console.log(modPath);
-        if (FS.existsSync(modPath)) {
-            var module = require(modPath)(app, express);
-        }
-    }
-    next();
 });
+
+//require(routesPath + 'index.js')(app, express, config);
 
 app.listen(PORT);
 console.log("Application Running in ", config.appUrl + ':' + PORT);
