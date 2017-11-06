@@ -1,34 +1,34 @@
 const passport = require('passport');
+const config = require('../config/config');
+var express = require('express');
+var router = express.Router();
 
-module.exports = (app, express, config) => {
 
-    app.get('/task', (req, res) => {
-        res.send({
-            welcome: ' environment'
-        });
-    });
+router.get('/', function(req, res) {
+  res.render('tasks/list_tasks', {
+    title: 'Tasks'
+  });
+});
 
-    app.get('/task/create', (req, res) => {
-        res.send({
-            welcome: ' environment'
-        });
-    });
+router.get('/add', function(req, res) {
+  res.render('tasks/add_task', {
+    title: 'Add New Task'
+  });
+});
 
-    app.get('/task/edit', (req, res) => {
-        res.send({
-            welcome: ' environment'
-        });
-    });
+router.get('/edit', function(req, res) {
+  res.render('tasks/edit_task', {
+    title: 'Edit Task',
+    task: {}
+  });
+});
 
-    app.get('/task/create', (req, res) => {
-        res.send({
-            welcome: ' environment'
-        });
-    });
+router.post('/update', function(req, res) {
 
-    app.get('/task/create', (req, res) => {
-        res.send({
-            welcome: ' environment'
-        });
-    });
-};
+});
+
+router.get('/delete', function(req, res) {
+
+});
+
+module.exports = router;
