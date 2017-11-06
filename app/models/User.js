@@ -1,19 +1,34 @@
 const mongoose = require('mongoose');
 const {
-  Schema
+    Schema
 } = mongoose; //const Schema = mongoose.Schema; #Destructuring
 
 const userSchema = new Schema({
-  id: [Number],
-  google_user_id: String,
-  google_user_token: String,
-  fullname: String,
-  email: String,
-  password: String,
-  created_on: {
-    type: Date,
-    default: Date.now
-  }
+    name: {
+        type: String,
+        required: true
+    },
+    google_id: {
+        type: String
+    },
+    image: {
+        type: String
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String
+    },
+    status: {
+        type: Number,
+        default: 1
+    },
+    created_on: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 mongoose.model('users', userSchema);

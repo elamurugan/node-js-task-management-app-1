@@ -1,0 +1,38 @@
+
+ <div class="account_section row column  align-center medium-6 large-4 container-padded">
+     <div class='login-body-left medium-6 columns'>
+          <form class='form-signin' name='signin' action='{{baseUrl}}/user/login/' method='POST'>
+            <label>
+                <input type="text" id="Email"  name="email" placeholder="Email" value="" class="form-control">
+            </label>
+
+            <label>
+                <input type="password" id="Password"  name="password" placeholder="Password" value="" class="form-control">
+            </label>
+             <p><button class="button" type="submit">Sign in</button></p>
+          </form>
+
+     </div>
+
+     <div class='login-body-right medium-6 columns'>
+       <form class='form-signin' name='signup' action='{{baseUrl}}/user/register/?abc=1' method='POST'>
+
+           <label>
+               <input type="text" id="Name" name="name" placeholder="Name" value="" class="form-control">
+           </label>
+
+           <label>
+               <input type="text" id="Email"  name="email" placeholder="Email" value="" class="form-control">
+           </label>
+
+           <label>
+               <input type="password" id="Password"  name="password" placeholder="Password" value="" class="form-control">
+           </label>
+
+           <label>
+               <input type="password" id="Confirm_Password"  name="cpassword"  placeholder="Confirm Password" value="" class="form-control">
+           </label>
+           <p><button class="button" type="submit">Sign Up</button></p>
+       </form>
+     </div>
+ </div>

@@ -1,30 +1,32 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "Node React App Training tutorial",
-  "main": "app.js",
-  "engines": {
-    "node": "8.1.1",
-    "npm": "5.0.3"
-  },
-  "scripts": {
-    "start": "node app.js",
-    "server": "nodemon app.js"
-  },
-  "author": "Ela",
-  "license": "ISC",
-  "dependencies": {
-    "concurrently": "^3.5.0",
-    "cookie-session": "^1.3.1",
-    "express": "^4.15.4",
-    "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.6",
-    "handlebars": "^4.0.11",
-    "lodash": "^4.17.4",
-    "method-override": "^2.3.10",
-    "mongoose": "^4.11.11",
-    "nodemon": "^1.12.1",
-    "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
-  }
+    "name": "server",
+    "version": "1.0.0",
+    "description": "Node App for Task Management",
+    "main": "app.js",
+    "engines": {
+        "node": "8.1.1",
+        "npm": "5.0.3"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "server": "nodemon app.js"
+    },
+    "author": "Ela",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "concurrently": "^3.5.0",
+        "connect-flash": "^0.1.1",
+        "cookie-session": "^1.3.1",
+        "express": "^4.15.4",
+        "express-handlebars": "^3.0.0",
+        "express-session": "^1.15.6",
+        "handlebars": "^4.0.11",
+        "method-override": "^2.3.10",
+        "mongoose": "^4.11.11",
+        "nodemon": "^1.12.1",
+        "passport": "^0.4.0",
+        "passport-google-oauth20": "^1.0.0",
+        "passport-local": "^1.0.0"
+    }
 }

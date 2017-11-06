@@ -1,47 +1,32 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="keywords" content=""/>
-    <meta name="author" content="Ela"/>
-
-    <title>{{title}} - {{appName}}</title>
-    <link href="{{baseUrl}}/css/foundation.min.css" rel="stylesheet"/>
-    <link href="{{baseUrl}}/css/foundation-icons.css" rel="stylesheet"/>
-    <link href="{{baseUrl}}/css/app.css" rel="stylesheet"/>
-
-    <script src="{{baseUrl}}/js/jquery.js"></script>
-    <script src="{{baseUrl}}/js/foundation.js"></script>
-    <script src="{{baseUrl}}/js/app.js"></script>
-
+  {{> _head }}
   </head>
 
   <body class="tasks">
 
-    <div class="site-wrapper">
-      <div class="site-wrapper-inner">
+    <div class="wrapper">
+      <div class="inner_wrapper">
 
-        <header class="header clearfix">
-            <div class="inner">
+        <div class="header">
+            <div class="page">
               <h4 class="logo" title="{{appName}}">{{logo}}</h4>
-              <nav class="nav nav-header">
-                <a class="nav-link active" href="#">Ela &#9786;</a>
-                <a class="nav-link" href="#">Logout</a>
-              </nav>
+               {{#if user}}
+                <nav class="nav nav_header">
+                  <a class="nav_link active" href="#">Hello {{user.name}} &#9786;</a>
+                  <a class="nav_link" href="user/logout">Logout</a>
+                </nav>
+              {{/if}}
             </div>
-          </header>
+        </div>
 
         <div class="tasks_wrapper">
             {{{body}}}
         </div>
 
-        <footer class="footer">
-          <div class="inner">
-            <p>&copy; {{copyright}} Full Stack Exercise Using Node.js/Mongo DB </p>
-          </div>
-        </footer>
+        {{> _footer }}
+
       </div>
     </div>
   </body>

@@ -1,156 +1,174 @@
-
 a,
 a:focus,
 a:hover {
-  color: #fff;
+    color: #fff;
 }
 
-p{
-  margin:0px;
+p {
+    margin: 0px;
 }
 
 html,
 body {
-  height: 100%;
-  color: #fff;
-  text-align: center;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
 }
-.home, .tasks .header, .tasks .footer{
-  background-color: #ea3f3f;
-  width: 100%;
-  float: left;
+
+.home,
+.tasks .header,
+.tasks .footer {
+    background-color: #263237;
+    width: 100%;
+    float: left;
 }
 
 .wrapper {
-  display: table;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
+    display: table;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
 }
-.wrapper-inner {
-  display: table-cell;
-  vertical-align: top;
+
+.inner_wrapper {
+    margin-top: 10%;
 }
+
 .container {
-  margin-right: auto;
-  margin-left: auto;
-  width:100%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
 }
 
-.inner {
-  padding: 2rem;
-  float: left;
-  width: 100%;
+.page {
+    padding: 2rem;
+    float: left;
+    width: 100%;
 }
 
-.tasks .inner {
+.tasks .page {
     padding: 10px;
 }
+
 .header {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .logo {
-  margin-bottom: 0;
-  cursor: pointer;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -3px;
-  line-height: 1;
-  text-shadow: #EDEDED 1px 1px 0px;
-  position: relative;
+    margin-bottom: 0;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 1;
+    text-shadow: #EDEDED 1px 1px 0px;
+    position: relative;
 }
 
 .footer {
-  color: rgba(255,255,255,.5);
+    color: rgba(255, 255, 255, .5);
 }
 
-.nav-header .nav-link {
-  padding: .25rem 0;
-  font-weight: 700;
-  color: rgba(255,255,255,.5);
-  background-color: transparent;
-  border-bottom: .25rem solid transparent;
+.nav_header .nav_link {
+    padding: .25rem 0;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .5);
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
 }
 
-.nav-header .nav-link:hover,
-.nav-header .nav-link:focus {
-  border-bottom-color: rgba(255,255,255,.25);
+.nav_header .nav_link:hover,
+.nav_header .nav_link:focus {
+    border-bottom-color: rgba(255, 255, 255, .25);
 }
 
-.nav-header .nav-link + .nav-link {
-  margin-left: 1rem;
+.nav_header .nav_link+.nav_link {
+    margin-left: 1rem;
 }
 
-.nav-header .active {
-  color: #fff;
-  border-bottom-color: #fff;
+.nav_header .active {
+    color: #fff;
+    border-bottom-color: #fff;
 }
 
-.login_register_section{
-  clear:both;
-  padding:20px;
-  width:100%;
-  float:left;
-  margin-top:100px;
-  position: relative;
+.login_register_section {
+    clear: both;
+    padding: 20px;
+    width: 100%;
+    float: left;
+    margin-top: 100px;
+    position: relative;
 }
-.login-body-left{float:left; width:45%; padding-right:4%; border-right:4px solid #ddd;}
-.login-body-right{float:right; width:50%;}
 
-.tasks_wrapper,.tasks_wrapper *{
-  color:#333;
+.account_section {
+    float: left;
+    width: 45%;
+    padding-right: 4%;
+    border-right: 4px solid #ddd;
 }
-.tasks_container{
-  margin:auto;
+
+.login-body-right {
+    float: right;
+    width: 50%;
 }
-.filters{
-  width:100%;
-  margin:0px;
-  padding:5px;
+
+.tasks_wrapper,
+.tasks_wrapper * {
+    color: #333;
 }
-.task-card{
-  width: 25%;
+
+.tasks_container {
+    margin: auto;
+}
+
+.filters {
+    width: 100%;
+    margin: 0px;
+    padding: 5px;
+}
+
+.task-card {
+    width: 25%;
 }
 
 @media (min-width: 48em) {
-  .logo {
-    float: left;
-  }
-  .nav-header {
-    float: right;
-  }
+    .logo {
+        float: left;
+    }
+    .nav_header {
+        float: right;
+    }
 }
 
 @media (min-width: 40em) {
-  .header {
-    position: fixed;
-    top: 0;
-  }
-  .footer {
-    position: fixed;
-    bottom: 0;
-  }
-
-  .wrapper-inner {
-    vertical-align: middle;
-  }
-  .header,
-  .footer,
-  .container {
-    width: 100%;
-  }
+    .header {
+        position: fixed;
+        top: 0;
+    }
+    .footer {
+        position: fixed;
+        bottom: 0;
+    }
+    .wrapper {
+        vertical-align: middle;
+    }
+    .header,
+    .footer,
+    .container {
+        width: 100%;
+    }
 }
 
 @media (min-width: 62em) {
-  .header,
-  .footer,
-  .container {
-    width: 60rem;
-  }
-  .tasks_container{
-    width: 98%;
-  }
+    .header,
+    .footer,
+    .container {
+        width: 100%;
+    }
+    .tasks_container {
+        width: 98%;
+    }
 }
