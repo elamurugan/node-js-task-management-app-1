@@ -20,10 +20,10 @@ const BasePath = PATH.join(__dirname, '/app/');
 mongoose.Promise = global.Promise;
 // Mongoose Connect
 mongoose.connect(config.mongoURI, {
-    useMongoClient: true
-  })
-  .then(() => console.log('DB ' + config.mongoURI + ' Connected'))
-  .catch(err => console.log(err));
+        useMongoClient: true
+    })
+    .then(() => console.log('DB ' + config.mongoURI + ' Connected'))
+    .catch(err => console.log(err));
 
 const app = express();
 var helpers = require('./app/helpers/helpers');
@@ -32,24 +32,24 @@ require('./app/models/Tasks');
 require('./app/helpers/passport');
 
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 }));
 app.use(bodyParser.json());
 app.engine('handlebars', exphbs({
-  extname: 'handlebars',
-  defaultLayout: 'app',
-  layoutsDir: BasePath + 'views/layouts',
-  partialsDir: BasePath + 'views/partials'
+    extname: 'handlebars',
+    defaultLayout: 'app',
+    layoutsDir: BasePath + 'views/layouts',
+    partialsDir: BasePath + 'views/partials'
 }));
 app.set('view engine', 'handlebars');
 app.use(express.static(PATH.join(__dirname, '/public')));
 app.set('views', BasePath + 'views');
 
 app.use(
-  cookieSession({
-    maxAge: config.cookieExpireTime,
-    keys: [config.cookieKey]
-  })
+    cookieSession({
+        maxAge: config.cookieExpireTime,
+        keys: [config.cookieKey]
+    })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -64,18 +64,18 @@ app.locals.baseUrl = config.appUrl + ':' + PORT;
 // require('./app/helpers/auth')(app);
 
 app.use(function routing(req, res, next) {
-  var reqModule = URL.parse(req.url).pathname.split('/')[1];
-  if (!reqModule) {
-    reqModule = 'home';
-  }
-  if (reqModule && config.modulesList.indexOf(reqModule) >= 0) {
-    var modPath = BasePath + 'controllers/' + reqModule + '.js ';
-    console.log(modPath);
-    if (FS.existsSync(modPath)) {
-      var module = require(modPath)(app, express);
+    var reqModule = URL.parse(req.url).pathname.split('/')[1];
+    if (!reqModule) {
+        reqModule = 'home';
     }
-  }
-  next();
+    if (reqModule && config.modulesList.indexOf(reqModule) >= 0) {
+        var modPath = BasePath + 'controllers/' + reqModule + '.js';
+        console.log(modPath);
+        if (FS.existsSync(modPath)) {
+            var module = require(modPath)(app, express);
+        }
+    }
+    next();
 });
 
 app.listen(PORT);
