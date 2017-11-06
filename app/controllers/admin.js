@@ -1,12 +1,5 @@
-const passport = require('passport');
-const config = require('../config/config');
-var express = require('express');
-var router = express.Router();
+module.exports = (app, express, config) => {
+    app.get('/admin', function(req, res) {
 
-
-app.get('/', function(req, res) {
-
-});
-
-
-module.exports = router;
+    });
+};
