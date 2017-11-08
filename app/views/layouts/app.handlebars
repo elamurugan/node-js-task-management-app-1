@@ -1,33 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
   {{> _head }}
-  </head>
+</head>
 
-  <body class="tasks">
+<body class="tasks">
 
-    <div class="wrapper">
-      <div class="inner_wrapper">
+  <div class="wrapper">
+    <div class="inner_wrapper">
 
-        <div class="header">
-            <div class="page">
-              <h4 class="logo" title="{{appName}}">{{logo}}</h4>
-               {{#if user}}
-                <nav class="nav nav_header">
-                  <a class="nav_link active" href="#">Hello {{user.name}} &#9786;</a>
-                  <a class="nav_link" href="user/logout">Logout</a>
-                </nav>
-              {{/if}}
-            </div>
+      <div class="header">
+        <div class="page">
+          <h4 class="logo" title="{{appName}}">{{logo}}</h4>
+          {{#if user}}
+          <nav class="nav nav_header">
+            <a class="nav_link active" href="{{baseUrl}}/user/profile">
+              Hello {{user.name}} 
+              <span>
+              {{#if user.image}}
+              <img src="{{user.image}}" alt="" style='width: 16px;'> 
+              {{else}}
+              &#9786;
+              {{/if}} 
+              </span>
+            </a>
+            <a class="nav_link" href="{{baseUrl}}/user/logout">Logout</a>
+          </nav>
+          {{/if}}
         </div>
-
-        <div class="tasks_wrapper">
-            {{{body}}}
-        </div>
-
-        {{> _footer }}
-
       </div>
+
+      <div class="tasks_wrapper">
+        {{{body}}}
+      </div>
+
+      {{> _footer }}
+
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

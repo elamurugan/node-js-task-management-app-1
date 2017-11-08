@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 // const User = mongoose.model('users');
 // const config = require('../config/config');
 
-module.exports = (passport, config, User) => {
+module.exports = (app, passport, config, User) => {
     passport.use(new GoogleStrategy({
         clientID: config.googleClientID,
         clientSecret: config.googleClientSecret,
@@ -15,7 +15,7 @@ module.exports = (passport, config, User) => {
         proxy: true
     }, (accessToken, refreshToken, profile, done) => {
         User.findOne({
-            googleUserId: profile.id
+            google_id: profile.id
         }).then((existingUser) => {
             if (existingUser) {
                 done(null, existingUser);
@@ -25,6 +25,7 @@ module.exports = (passport, config, User) => {
                     google_id: profile.id,
                     name: profile.displayName,
                     email: profile.emails[0].value,
+                    image: profile.photos[0].value
                 };
                 new User(newUser)
                     .save()
@@ -71,4 +72,5 @@ module.exports = (passport, config, User) => {
             }
         });
     });
+
 };

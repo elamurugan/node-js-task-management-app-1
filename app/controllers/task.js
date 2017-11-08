@@ -8,26 +8,16 @@ module.exports = (app, express, config) => {
     });
 
     app.get('/task/create', ensureAuthenticated, (req, res) => {
-        res.send({
-            welcome: ' environment'
+        res.render('frontend/tasks/form', {
+            title: 'Create New Task'
         });
     });
 
     app.get('/task/edit', ensureAuthenticated, (req, res) => {
-        res.send({
-            welcome: ' environment'
+        res.render('frontend/tasks/form', {
+            title: 'Edit Task'
         });
     });
 
-    app.get('/task/create', ensureAuthenticated, (req, res) => {
-        res.send({
-            welcome: ' environment'
-        });
-    });
 
-    app.get('/task/create', ensureAuthenticated, (req, res) => {
-        res.send({
-            welcome: ' environment'
-        });
-    });
 };

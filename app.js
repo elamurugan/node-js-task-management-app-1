@@ -83,9 +83,9 @@ app.locals.bp = __dirname + '/';
 
 app.use(function(req, res, next) {
     app.locals.user = req.user;
+    //console.log('Req Path ', req.path);
     next();
 });
-
 
 require('fs').readdirSync(ctrlPath).forEach(function(file) {
     if (file.match(/.+\.js/g) !== null) {
@@ -94,7 +94,7 @@ require('fs').readdirSync(ctrlPath).forEach(function(file) {
     }
 });
 
-require('./app/helpers/passport')(passport, config, User);
+require('./app/helpers/passport')(app, passport, config, User);
 
 app.listen(PORT);
 console.log("Application Running in ", config.appUrl + ':' + PORT);
