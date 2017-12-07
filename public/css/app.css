@@ -134,6 +134,10 @@ body {
     width: 25%;
 }
 
+.tasks .inner_wrapper {
+    margin-top: 70px;
+}
+
 @media (min-width: 48em) {
     .logo {
         float: left;

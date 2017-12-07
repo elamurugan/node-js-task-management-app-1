@@ -1,4 +1,5 @@
 module.exports = (app, express, config) => {
+    app.set('views', app.get('_VIEWS_PATH') + '/frontend');
     app.get('/', (req, res) => {
         if (req.user) {
             res.writeHead(302, {
@@ -6,7 +7,7 @@ module.exports = (app, express, config) => {
             });
             res.end();
         } else {
-            res.render('frontend/home', {
+            res.render('home', {
                 title: 'Home',
                 layout: 'layout'
             });

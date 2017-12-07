@@ -14,19 +14,24 @@
         <div class="page">
           <h4 class="logo" title="{{appName}}">{{logo}}</h4>
           {{#if user}}
-          <nav class="nav nav_header">
-            <a class="nav_link active" href="{{baseUrl}}/user/profile">
-              Hello {{user.name}} 
-              <span>
-              {{#if user.image}}
-              <img src="{{user.image}}" alt="" style='width: 16px;'> 
-              {{else}}
-              &#9786;
-              {{/if}} 
-              </span>
-            </a>
-            <a class="nav_link" href="{{baseUrl}}/user/logout">Logout</a>
-          </nav>
+          <ul class="nav nav-tabs nav_header">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                {{user.name}}
+                <span>
+                  {{#if user.image}}
+                  <img src="{{user.image}}" alt="" style='width: 16px;'> {{else}} &#9786; {{/if}}
+                </span>
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{baseUrl}}/user/profile">Profile</a>
+                <a class="dropdown-item" href="{{baseUrl}}/task">My Tasks</a>
+                <a class="dropdown-item" href="{{baseUrl}}/task/create">Add New Task</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{baseUrl}}/user/logout">Logout</a>
+              </div>
+            </li>
+          </ul>
           {{/if}}
         </div>
       </div>

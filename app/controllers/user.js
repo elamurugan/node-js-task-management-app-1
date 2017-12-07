@@ -3,6 +3,7 @@ const passport = require('passport');
 var helpers = require('../helpers/helpers');
 
 module.exports = (app, express, config) => {
+    app.set('views', app.get('_VIEWS_PATH') + '/frontend');
     app.get('/user/', function(req, res) {
         res.writeHead(302, {
             'Location': helpers.baseUrl() + '/user/login'
@@ -11,17 +12,29 @@ module.exports = (app, express, config) => {
     });
 
     app.get('/user/login', function(req, res) {
-        res.send({
-            msg: 'Login Please',
-            code: 403
-        });
+        if (req.user) {
+            res.render('users/login', {
+                title: 'Login'
+            });
+        } else {
+            res.writeHead(302, {
+                'Location': helpers.baseUrl() + '/user/login'
+            });
+            res.end();
+        }
     });
 
     app.get('/user/register', function(req, res) {
-        res.send({
-            msg: 'Register Please',
-            code: 403
-        });
+        if (req.user) {
+            res.render('users/register', {
+                title: 'Register'
+            });
+        } else {
+            res.writeHead(302, {
+                'Location': helpers.baseUrl() + '/user/login'
+            });
+            res.end();
+        }
     });
 
 
@@ -96,19 +109,33 @@ module.exports = (app, express, config) => {
 
     app.get('/user/profile', (req, res) => {
         if (req.user) {
-            res.send(req.user);
-        } else {
-            res.send({
-                msg: 'Login Please',
-                code: 403
+            res.render('users/profile', {
+                title: 'Profile'
             });
+        } else {
+            res.writeHead(302, {
+                'Location': helpers.baseUrl() + '/user/login'
+            });
+            res.end();
         }
     });
 
     app.get('/user/tasks', function(req, res) {
-        res.render('tasks/list_tasks', {
-            title: 'Tasks'
-        });
+        if (req.user) {
+            res.render('tasks/list', {
+                title: 'Profile'
+            });
+        } else {
+            res.writeHead(302, {
+                'Location': helpers.baseUrl() + '/user/login'
+            });
+            res.end();
+        }
+    });
+
+    app.get('/user/list', function(req, res) {
+        res.send([{ id: 1, name: 'hello 1' }, { id: 2, name: 'hello 2' }, { id: 3, name: 'hello 3' }]);
+        res.end();
     });
 
 }

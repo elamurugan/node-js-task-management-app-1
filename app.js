@@ -15,6 +15,7 @@ const flash = require('connect-flash');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const _BP = PATH.join(__dirname, '/');
 const _AppPath = PATH.join(__dirname, '/app/');
 
 // Map global promises
@@ -48,6 +49,8 @@ app.set('view engine', 'handlebars');
 app.use(express.static(PATH.join(__dirname, '/public')));
 app.set('views', _AppPath + 'views');
 app.set('layouts', _AppPath + 'views/layoutss');
+app.set('_BP', _BP);
+app.set('_VIEWS_PATH', app.get('views'));
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -83,14 +86,12 @@ app.locals.bp = __dirname + '/';
 
 app.use(function(req, res, next) {
     app.locals.user = req.user;
-    //console.log('Req Path ', req.path);
     next();
 });
 
 require('fs').readdirSync(ctrlPath).forEach(function(file) {
     if (file.match(/.+\.js/g) !== null) {
         require(ctrlPath + file)(app, express, config);
-        console.log(ctrlPath + file);
     }
 });
 
