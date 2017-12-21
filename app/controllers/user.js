@@ -12,20 +12,20 @@ module.exports = (app, express, config) => {
     });
 
     app.get('/user/login', function(req, res) {
-        if (req.user) {
+        if (!req.user) {
             res.render('users/login', {
                 title: 'Login'
             });
         } else {
-            res.writeHead(302, {
-                'Location': helpers.baseUrl() + '/user/login'
-            });
-            res.end();
+            // res.writeHead(302, {
+            //     'Location': helpers.baseUrl() + '/user/login'
+            // });
+            // res.end();
         }
     });
 
     app.get('/user/register', function(req, res) {
-        if (req.user) {
+        if (!req.user) {
             res.render('users/register', {
                 title: 'Register'
             });

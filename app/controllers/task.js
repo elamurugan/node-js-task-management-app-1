@@ -1,4 +1,5 @@
-var ensureAuthenticated = require('../../app/helpers/helpers').ensureAuthenticated;
+const helpers = require('../../app/helpers/helpers');
+var ensureAuthenticated = helpers.ensureAuthenticated;
 module.exports = (app, express, config) => {
     app.set('views', app.get('_VIEWS_PATH') + '/frontend');
 
