@@ -31,13 +31,13 @@ const app = express();
 
 // var helpers = require('./app/helpers/helpers');
 
-require('./app/models/User');
+require('./app/models/Users');
 require('./app/models/Tasks');
 
 // require('./app/helpers/loadModules').requireModules(_AppPath + 'models/');
 
-const User = mongoose.model('users');
-const Task = mongoose.model('tasks');
+const Users = mongoose.model('users');
+const Tasks = mongoose.model('tasks');
 
 app.engine('handlebars', exphbs({
     extname: 'handlebars',
@@ -95,7 +95,7 @@ require('fs').readdirSync(ctrlPath).forEach(function(file) {
     }
 });
 
-require('./app/helpers/passport')(app, passport, config, User);
+require('./app/helpers/passport')(app, passport, config, Users);
 
 app.listen(PORT);
 console.log("Application Running in ", config.appUrl + ':' + PORT);
